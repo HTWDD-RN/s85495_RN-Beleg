@@ -52,7 +52,7 @@ public class FileTransfer implements FT {
         logger.log(Level.FINER, "Client-FT: Start sent -Finished ");
 
 
-                        //session nummer
+        //session nummer
         int sessionnummer = getSessionID();
         //Print the session nummer
         System.out.println("Session Nummer is: "+sessionnummer);
@@ -162,3 +162,4 @@ public class FileTransfer implements FT {
         this.socket = socket;
     }
 }
+
