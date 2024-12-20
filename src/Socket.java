@@ -1,6 +1,9 @@
 import static java.net.InetAddress.getByName;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -15,7 +18,12 @@ import java.util.logging.Logger;
 
 /** @author Jörg Vogt */
 
+
 public class Socket {
+
+
+            //writing in the file
+  int i;
   private static final int MTU_max = 65536; // for receiver
   private static boolean isServer;
   private InetAddress peerAddress;
@@ -33,6 +41,7 @@ public class Socket {
    * @throws SocketException in case of problems
    * @throws UnknownHostException as the exception says
    */
+  //Client
   public Socket(String host, int port) throws SocketException, UnknownHostException {
     isServer = false;
     this.port = port;
@@ -52,7 +61,7 @@ public class Socket {
    * @param delay simulate network delay (average RTT in ms)
    * @throws SocketException in case of socket problems
    */
-  public Socket(int port, double loss, int delay) throws SocketException {
+  public Socket(int port, double loss, int delay) throws SocketException {  //Server call from FileCopy
     isServer = true;
     socket = new DatagramSocket(port);
     logger.log(Level.FINER, "Rcv Buffer Size: " + socket.getReceiveBufferSize());
@@ -74,15 +83,15 @@ public class Socket {
    * @return Data
    * @throws TimeoutException socket timeout
    */
-  public DatagramPacket receivePacket() throws TimeoutException {
-    DatagramPacket dataPacket = new DatagramPacket(new byte[MTU_max], MTU_max);
-      try {
-        channel.receivePacket(dataPacket);  // socket
-      } catch (SocketTimeoutException e) {
-        throw new TimeoutException();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+    public DatagramPacket receivePacket() throws TimeoutException {   //to recive the packet, called by SW
+      DatagramPacket dataPacket = new DatagramPacket(new byte[MTU_max], MTU_max);
+        try {
+          channel.receivePacket(dataPacket);  // receive the packet and return the datapacket
+        } catch (SocketTimeoutException e) {
+          throw new TimeoutException();
+        } catch (IOException e) {
+          e.printStackTrace() ;
+        }
 
     if (isServer) {
         peerAddress = dataPacket.getAddress();

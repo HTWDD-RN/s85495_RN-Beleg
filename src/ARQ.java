@@ -23,7 +23,7 @@ public interface ARQ {
    */
   int getBackData();
 
-  /** Receiver waits for a repeated last packet and send ACK again */
+  /** Receiver waits for a repeated last packet and send ACK again. */
   void closeConnection();
 
   /**
@@ -37,4 +37,7 @@ public interface ARQ {
   int getMTU();
 
   void setMTU(int MTU);
+
+
+  //int getSessionID();
 }

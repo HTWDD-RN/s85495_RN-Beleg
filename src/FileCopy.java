@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+//Problem liegt in FileTransfer
 /** @author Jörg Vogt */
 
 /*
@@ -35,7 +35,7 @@ public class FileCopy {
       System.exit(1);
     }
 
-    switch (args[0]) {
+    switch (args[0]) {    //client
       case "client":
         String host = args[1];
         port = Integer.parseInt(args[2]);
@@ -59,11 +59,11 @@ public class FileCopy {
     }
   }
 
-  private static void sendFile(String host, int port, String fileName, String arq)
+  private static void sendFile(String host, int port, String fileName, String arq) //client
       throws IOException {
     // establish socket - exception possible
     // TODO Exception handling
-    Socket socket = new Socket(host, port);
+    Socket socket = new Socket(host, port);   
     FileTransfer myFT = new FileTransfer(host, socket, fileName, arq);
     boolean c = myFT.file_req();
     if (c) System.out.println("Client-AW: Ready");
@@ -73,7 +73,7 @@ public class FileCopy {
     }
   }
 
-  private static void handleConnection(int port) throws IOException {
+  private static void handleConnection(int port) throws IOException { //server
     // establish connection
     Socket socket = new Socket(port, loss, delay);
     FileTransfer myFT = new FileTransfer(socket, dir);

@@ -38,7 +38,7 @@ public class Channel {
     }
   }
 
-  public DatagramPacket receivePacket(DatagramPacket dataPacket) throws IOException {
+  public DatagramPacket receivePacket(DatagramPacket dataPacket) throws IOException { //receive packet
     do {
         socket.receive(dataPacket);
     } while (!simulateLoss());  // no delay on receive path
