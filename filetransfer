@@ -5,4 +5,8 @@
 # java FileCopy localhost 3333 ../dd1.jpg
 # cd ..
 
+
+Client Parameters: client idefix port 3333 Resources/file.txt SW 
+Server Parameters: server 3333 0.1 150 
+
 java -cp bin:s12345/bin FileCopy $1 $2 $3 $4 > /dev/null

@@ -2,6 +2,9 @@
 
 # Keyur Hareshbhai Kachhadiya
 
+Client Parameters: client idefix port 3333 Resources/file.txt SW 
+Server Parameters: server 3333 0.1 150 
+
 Beleg UDP-Dateitransfer für Rechnernetze/Kommunikationssysteme
 
 Die Aufgabenstellung besteht aus den Teilen:
